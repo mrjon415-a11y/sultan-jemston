@@ -1,0 +1,20 @@
+name: Rename index-light
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename file
+        run: |
+          git config user.name "mrjon415-a11y"
+          git config user.email "mrjon415-a11y@users.noreply.github.com"
+          if [ -f index-light.html ]; then
+            git mv index-light.html index.html
+            git commit -m "Rename index-light.html to index.html"
+            git push
+          fi
