@@ -1,0 +1,16 @@
+name: Rename light file
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "mrjon415-a11y"
+          git config user.email "mrjon415-a11y@users.noreply.github.com"
+          git mv index-light.html index.html
+          git commit -m "Rename index-light.html to index.html"
+          git push
